@@ -87,7 +87,7 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
       }
 
       console.log("Removing wishlist item:", itemId);
-      await axios.delete(`http://localhost:10406/wishlist/${itemId}`, {
+      await axios.delete(`https://newcrafts.onrender.com/wishlist/${itemId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -137,7 +137,7 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
       }
 
       console.log("Clearing entire wishlist...");
-      await axios.delete("http://localhost:10406/wishlist/clear", {
+      await axios.delete("https://newcrafts.onrender.com/wishlist/clear", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -178,7 +178,7 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
 
       console.log("Adding to cart from wishlist:", productId);
       await axios.post(
-        "http://localhost:10406/cart",
+        "https://newcrafts.onrender.com/cart",
         { product_id: [productId] },
         {
           headers: {
@@ -212,11 +212,14 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
         return;
       }
 
-      const response = await axios.get("http://localhost:10406/viewcart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewcart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (Array.isArray(response.data)) {
         setCartItems(response.data);
@@ -316,7 +319,7 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
                 <div className="item-image">
                   {item.image_path ? (
                     <img
-                      src={`http://localhost:10406/${item.image_path}`}
+                      src={`https://newcrafts.onrender.com/${item.image_path}`}
                       alt={item.product_name || "Product"}
                       onError={(e) => {
                         e.target.style.display = "none";

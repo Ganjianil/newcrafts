@@ -93,7 +93,7 @@ const Account = ({
       if (!token) return;
 
       const response = await axios.get(
-        "http://localhost:10406/user/addresses",
+        "https://newcrafts.onrender.com/user/addresses",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -112,9 +112,12 @@ const Account = ({
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const response = await axios.get("http://localhost:10406/user/rewards", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/user/rewards",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setRewards(response.data);
     } catch (error) {
       console.error("Error fetching rewards:", error);
@@ -128,9 +131,13 @@ const Account = ({
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      await axios.put("http://localhost:10406/user/profile", profileData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.put(
+        "https://newcrafts.onrender.com/user/profile",
+        profileData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setEditingProfile(false);
       fetchUserData(); // Refetch to update full_name in Header
       alert("Profile updated successfully");
@@ -151,16 +158,20 @@ const Account = ({
       const token = localStorage.getItem("token");
       if (editingAddress && editingAddress.id) {
         await axios.put(
-          `http://localhost:10406/user/addresses/${editingAddress.id}`,
+          `https://newcrafts.onrender.com/user/addresses/${editingAddress.id}`,
           newAddress,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
       } else {
-        await axios.post("http://localhost:10406/user/addresses", newAddress, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.post(
+          "https://newcrafts.onrender.com/user/addresses",
+          newAddress,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
       }
       setNewAddress({
         name: "",
@@ -190,9 +201,12 @@ const Account = ({
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:10406/user/addresses/${addressId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://newcrafts.onrender.com/user/addresses/${addressId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchAddresses();
       alert("Address deleted successfully");
     } catch (error) {

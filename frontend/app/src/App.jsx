@@ -41,7 +41,7 @@ function App() {
 
         if (token) {
           try {
-            await axios.get("http://localhost:10406/user/profile", {
+            await axios.get("https://newcrafts.onrender.com/user/profile", {
               headers: { Authorization: `Bearer ${token}` },
             });
             setIsAuthenticated(true);
@@ -77,11 +77,14 @@ function App() {
 
   const fetchCartItems = async (token) => {
     try {
-      const response = await axios.get("http://localhost:10406/viewcart", {
-        headers: {
-          Authorization: `Bearer ${token || localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewcart",
+        {
+          headers: {
+            Authorization: `Bearer ${token || localStorage.getItem("token")}`,
+          },
+        }
+      );
       setCartItems(response.data);
     } catch (error) {
       console.error("Error fetching cart items:", error);
