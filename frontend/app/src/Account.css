@@ -1,0 +1,572 @@
+.account-overlay {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+padding: 20px;
+}
+
+.account-modal {
+background: white;
+border-radius: 12px;
+width: 100%;
+max-width: 800px;
+max-height: 90vh;
+overflow: hidden;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.account-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 30px;
+border-bottom: 1px solid #eee;
+background: #f8f9fa;
+}
+
+.account-header h2 {
+margin: 0;
+color: #333;
+font-size: 1.5rem;
+}
+
+.close-btn {
+background: none;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+color: #666;
+padding: 5px;
+border-radius: 50%;
+transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+background: #f0f0f0;
+color: #333;
+}
+
+.account-content {
+padding: 0;
+max-height: calc(90vh - 80px);
+overflow-y: auto;
+}
+
+.user-info {
+display: flex;
+align-items: center;
+gap: 15px;
+padding: 30px;
+border-bottom: 1px solid #eee;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+}
+
+.user-avatar {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+font-weight: bold;
+color: white;
+}
+
+.user-details h3 {
+margin: 0 0 5px 0;
+font-size: 1.3rem;
+}
+
+.user-details p {
+margin: 0;
+opacity: 0.9;
+font-size: 0.9rem;
+}
+
+.account-tabs {
+display: flex;
+border-bottom: 1px solid #eee;
+background: #f8f9fa;
+}
+
+.tab {
+flex: 1;
+padding: 15px 20px;
+border: none;
+background: none;
+cursor: pointer;
+font-size: 0.9rem;
+color: #666;
+transition: all 0.2s ease;
+border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+background: #e9ecef;
+color: #333;
+}
+
+.tab.active {
+color: #667eea;
+border-bottom-color: #667eea;
+background: white;
+}
+
+.tab-content {
+padding: 30px;
+}
+
+/* Profile Section */
+.profile-section {
+}
+
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 25px;
+}
+
+.section-header h4 {
+margin: 0;
+color: #333;
+font-size: 1.2rem;
+}
+
+.edit-btn {
+background: #667eea;
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+background: #5a67d8;
+}
+
+.profile-form {
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.form-group label {
+font-weight: 500;
+color: #333;
+font-size: 0.9rem;
+}
+
+.form-group input {
+padding: 12px;
+border: 1px solid #ddd;
+border-radius: 6px;
+font-size: 0.9rem;
+transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+outline: none;
+border-color: #667eea;
+box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.save-btn {
+background: #28a745;
+color: white;
+border: none;
+padding: 12px 24px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+align-self: flex-start;
+}
+
+.save-btn:hover {
+background: #218838;
+}
+
+.save-btn:disabled {
+background: #ccc;
+cursor: not-allowed;
+}
+
+.profile-display {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.profile-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px;
+background: #f8f9fa;
+border-radius: 8px;
+}
+
+.profile-item label {
+font-weight: 500;
+color: #666;
+}
+
+.profile-item span {
+color: #333;
+}
+
+/* Orders Section */
+.orders-section {
+text-align: center;
+padding: 40px 20px;
+}
+
+.orders-section h4 {
+margin: 0 0 10px 0;
+color: #333;
+}
+
+.orders-section p {
+margin: 0 0 25px 0;
+color: #666;
+}
+
+.view-orders-btn {
+background: #667eea;
+color: white;
+border: none;
+padding: 12px 24px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+}
+
+.view-orders-btn:hover {
+background: #5a67d8;
+}
+
+/* Addresses Section */
+.addresses-section {
+}
+
+.add-btn {
+background: #28a745;
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+background: #218838;
+}
+
+.address-form {
+background: #f8f9fa;
+padding: 25px;
+border-radius: 8px;
+margin-bottom: 25px;
+}
+
+.address-form h5 {
+margin: 0 0 20px 0;
+color: #333;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+}
+
+.form-actions {
+display: flex;
+gap: 10px;
+margin-top: 20px;
+}
+
+.form-actions button {
+padding: 10px 20px;
+border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
+
+.form-actions button:first-child { background: #28a745; color: white; }
+
+.form-actions button:first-child:hover { background: #218838; }
+
+.form-actions button:last-child { background: #6c757d; color: white; }
+
+.form-actions button:last-child:hover { background: #5a6268; }
+
+.addresses-list { display: flex; flex-direction: column; gap: 15px; }
+
+.address-card { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; transition: all 0.2s ease; }
+
+.address-card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+
+.address-info h5 { margin: 0 0 10px 0; color: #333; display: flex; align-items: center; gap: 10px; }
+
+.default-badge { background: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: normal; }
+
+.address-info p { margin: 5px 0; color: #666; font-size: 0.9rem; }
+
+.address-actions { display: flex; gap: 10px; }
+
+.address-actions button { padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: all 0.2s ease; }
+
+.address-actions button:first-child { background: #667eea; color: white; }
+
+.address-actions button:first-child:hover { background: #5a67d8; }
+
+.address-actions button:last-child { background: #dc3545; color: white; }
+
+.address-actions button:last-child:hover { background: #c82333; }
+
+/* Rewards Section */ .rewards-section { }
+
+.rewards-section h4 { margin: 0 0 25px 0; color: #333; }
+
+.rewards-card { display: flex; justify-content: space-between; align-items: center; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white; margin-bottom: 25px; }
+
+.rewards-points { text-align: center; }
+
+.rewards-points h3 { margin: 0; font-size: 2.5rem; font-weight: bold; }
+
+.rewards-points p { margin: 5px 0 0 0; opacity: 0.9; }
+
+.rewards-level { text-align: center; }
+
+.rewards-level h4 { margin: 0; font-size: 1.3rem; }
+
+.rewards-level p { margin: 5px 0 0 0; opacity: 0.9; font-size: 0.9rem; }
+
+.rewards-info { background: #f8f9fa; padding: 20px; border-radius: 8px; }
+
+.rewards-info h5 { margin: 0 0 15px 0; color: #333; }
+
+.rewards-info ul { margin: 0; padding-left: 20px; }
+
+.rewards-info li { margin-bottom: 8px; color: #666; font-size: 0.9rem; }
+
+/* Account Footer */ .account-footer { padding: 20px 30px; border-top: 1px solid #eee; background: #f8f9fa; }
+
+.logout-btn { background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
+
+.logout-btn:hover { background: #c82333; }
+
+/* Login Prompt */ .login-prompt { text-align: center; padding: 40px 20px; }
+
+.login-prompt h3 { margin: 0 0 20px 0; color: #333; }
+
+.login-prompt button { background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
+
+.login-prompt button:hover { background: #5a67d8; }
+
+/* Mobile Responsive */ @media (max-width: 768px) { .account-overlay { padding: 10px; }
+
+.account-modal { max-width: 100%; max-height: 95vh; }
+
+.account-header { padding: 15px 20px; }
+
+.account-header h2 { font-size: 1.3rem; }
+
+.user-info { padding: 20px; flex-direction: column; text-align: center; gap: 10px; }
+
+.user-avatar { width: 50px; height: 50px; font-size: 1.2rem; }
+
+.account-tabs { flex-direction: column; }
+
+.tab { padding: 12px 15px; font-size: 0.8rem; }
+
+.tab-content { padding: 20px; }
+
+.section-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+
+.form-row { grid-template-columns: 1fr; }
+
+.address-card { flex-direction: column; gap: 15px; }
+
+.address-actions { align-self: flex-start; }
+
+.rewards-card { flex-direction: column; gap: 20px; text-align: center; }
+
+.account-footer { padding: 15px 20px; } }
+
+@media (max-width: 480px) { .account-header { padding: 12px 15px; }
+
+.account-header h2 { font-size: 1.2rem; }
+
+.user-info { padding: 15px; }
+
+.tab { padding: 10px 12px; font-size: 0.75rem; }
+
+.tab-content { padding: 15px; }
+
+.rewards-points h3 { font-size: 2rem; }
+
+.form-group input { padding: 10px; }
+
+.save-btn, .view-orders-btn, .add-btn { padding: 10px 16px; font-size: 0.8rem; } }
+
+/* Smooth transitions */
+
+
+/* Custom scrollbar */ .account-content::-webkit-scrollbar { width: 6px; }
+
+.account-content::-webkit-scrollbar-track { background: #f1f1f1; }
+
+.account-content::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+
+.account-content::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+
+/* Add these styles to your existing Account.css */
+
+.login-actions {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+justify-content: center;
+}
+
+.login-btn, .signup-btn {
+padding: 12px 24px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+font-weight: 500;
+}
+
+.login-btn {
+background: #667eea;
+color: white;
+}
+
+.login-btn:hover {
+background: #5a67d8;
+}
+
+.signup-btn {
+background: #28a745;
+color: white;
+}
+
+.signup-btn:hover {
+background: #218838;
+}
+
+.success-alert {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 16px;
+background: #d4edda;
+border: 1px solid #c3e6cb;
+border-radius: 8px;
+color: #155724;
+margin-bottom: 20px;
+font-size: 0.9rem;
+}
+
+.success-icon {
+font-size: 1.1rem;
+}
+
+/* Mobile responsive for login actions */
+@media (max-width: 480px) {
+.login-actions {
+flex-direction: column;
+}
+
+.login-btn, .signup-btn {
+width: 100%;
+}
+}
+/* Add these styles to your existing Account.css */
+
+.login-actions {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+justify-content: center;
+}
+
+.login-btn, .signup-btn {
+padding: 12px 24px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.9rem;
+transition: all 0.2s ease;
+font-weight: 500;
+}
+
+.login-btn {
+background: #667eea;
+color: white;
+}
+
+.login-btn:hover {
+background: #5a67d8;
+}
+
+.signup-btn {
+background: #28a745;
+color: white;
+}
+
+.signup-btn:hover {
+background: #218838;
+}
+
+.success-alert {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 16px;
+background: #d4edda;
+border: 1px solid #c3e6cb;
+border-radius: 8px;
+color: #155724;
+margin-bottom: 20px;
+font-size: 0.9rem;
+}
+
+.success-icon {
+font-size: 1.1rem;
+}
+
+/* Mobile responsive for login actions */
+@media (max-width: 480px) {
+.login-actions {
+flex-direction: column;
+}
+
+.login-btn, .signup-btn {
+width: 100%;
+}
+}

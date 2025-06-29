@@ -1,0 +1,256 @@
+/* Mobile Footer - Only visible on mobile devices */
+.mobile-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #2c2c2c;
+  border-top: 1px solid #404040;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  display: none; /* Hidden by default */
+}
+
+/* Show only on mobile devices */
+@media (max-width: 768px) {
+  .mobile-footer {
+    display: block;
+  }
+}
+
+.mobile-footer-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.mobile-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  background: #2c2c2c;
+}
+
+.mobile-nav-item {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 80px;
+  position: relative;
+}
+
+.mobile-nav-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-item.active {
+  color: #fff;
+}
+
+.mobile-nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: #ff6b6b;
+  border-radius: 0 0 2px 2px;
+}
+
+.mobile-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.5;
+}
+
+.mobile-nav-item:active .mobile-nav-icon {
+  transform: scale(0.95);
+}
+
+.mobile-nav-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Specific icon customizations */
+.mobile-nav-item:nth-child(1) .mobile-nav-icon svg {
+  /* Home icon */
+  stroke-width: 1.8;
+}
+
+.mobile-nav-item:nth-child(2) .mobile-nav-icon svg {
+  /* Brands/Tag icon */
+  stroke-width: 1.6;
+}
+
+.mobile-nav-item:nth-child(3) .mobile-nav-icon svg {
+  /* Categories/Menu icon */
+  stroke-width: 2;
+}
+
+.mobile-nav-item:nth-child(4) .mobile-nav-icon svg {
+  /* Luxe/Diamond icon */
+  stroke-width: 1.5;
+}
+
+.mobile-nav-item:nth-child(5) .mobile-nav-icon svg {
+  /* Account/User icon */
+  stroke-width: 1.6;
+}
+
+/* Active state animations */
+.mobile-nav-item.active .mobile-nav-icon {
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-4px);
+  }
+  80% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Ripple effect on tap */
+.mobile-nav-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.mobile-nav-item:active::after {
+  width: 60px;
+  height: 60px;
+}
+
+/* Safe area for devices with notches */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 375px) {
+  .mobile-nav-item {
+    padding: 6px 2px;
+    max-width: 70px;
+  }
+  
+  .mobile-nav-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .mobile-nav-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* Large mobile devices */
+@media (min-width: 576px) and (max-width: 768px) {
+  .mobile-nav-item {
+    padding: 10px 6px;
+    max-width: 90px;
+  }
+  
+  .mobile-nav-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .mobile-nav-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Hide on desktop and tablet */
+@media (min-width: 769px) {
+  .mobile-footer {
+    display: none !important;
+  }
+}
+
+/* Ensure content doesn't get hidden behind footer */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 70px;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .mobile-footer {
+    background: #1a1a1a;
+    border-top-color: #333;
+  }
+  
+  .mobile-nav-item {
+    color: #888;
+  }
+  
+  .mobile-nav-item:hover,
+  .mobile-nav-item.active {
+    color: #fff;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mobile-footer {
+    border-top: 2px solid #fff;
+  }
+  
+  .mobile-nav-item.active::before {
+    background: #fff;
+    height: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-item,
+  .mobile-nav-icon,
+  .mobile-nav-item::after {
+    transition: none;
+  }
+  
+  .mobile-nav-item.active .mobile-nav-icon {
+    animation: none;
+  }
+}
