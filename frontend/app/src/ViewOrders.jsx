@@ -16,7 +16,9 @@ fetchOrders();
 
 const fetchOrders = async () => {
 try {
-const response = await axios.get("http://localhost:10406/admin/orders");
+const response = await axios.get(
+  "https://newcrafts.onrender.com/admin/orders"
+);
 setOrders(response.data);
 setLoading(false);
 } catch (error) {
@@ -28,8 +30,8 @@ setLoading(false);
 const updateOrderStatus = async (orderId, status) => {
 try {
 setUpdatingStatus(orderId);
-await axios.put(`http://localhost:10406/order/${orderId}/status`, {
-status,
+await axios.put(`https://newcrafts.onrender.com/order/${orderId}/status`, {
+  status,
 });
 alert(`Order status updated to ${status}. Customer has been notified via email.`);
 fetchOrders(); // Refresh the list

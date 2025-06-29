@@ -65,7 +65,7 @@ const Account = ({
         return;
       }
 
-      const response = await axios.get("http://localhost:10406/user/profile", {
+      const response = await axios.get("https://newcrafts.onrender.com/user/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(response.data);

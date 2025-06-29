@@ -64,11 +64,14 @@ const Signup = () => {
         email: formData.email,
       });
 
-      const response = await axios.post("http://localhost:10406/signup", {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-      });
+      const response = await axios.post(
+        "https://newcrafts.onrender.com/signup",
+        {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
       console.log("Signup response:", response.data);
 

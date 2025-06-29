@@ -23,7 +23,7 @@ const ProductVariantModal = ({ product, onClose, onPreOrder }) => {
   const fetchProductVariants = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/products/${product.id}`
+        `https://newcrafts.onrender.com/api/products/${product.id}`
       );
       setVariants(response.data.variants || []);
 
@@ -87,7 +87,7 @@ const ProductVariantModal = ({ product, onClose, onPreOrder }) => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/preorders",
+        "https://newcrafts.onrender.com/api/preorders",
         preOrderData
       );
 
@@ -143,7 +143,7 @@ const ProductVariantModal = ({ product, onClose, onPreOrder }) => {
               {currentImages.length > 0 ? (
                 <>
                   <img
-                    src={`http://localhost:5000${currentImages[currentImageIndex].url}`}
+                    src={`https://newcrafts.onrender.com/${currentImages[currentImageIndex].url}`}
                     alt={`${product.name} - ${selectedVariant?.variant_type}`}
                     className="product-main-image"
                   />

@@ -166,7 +166,7 @@ const AddPreOrderProduct = () => {
 
       // Step 1: Create ONE product with all images
       const productResponse = await axios.post(
-        "http://localhost:10406/products/preorder",
+        "https://newcrafts.onrender.com/products/preorder",
         formData,
         {
           headers: {
@@ -194,7 +194,7 @@ const AddPreOrderProduct = () => {
 
       console.log("Adding variants to the single product...");
       const variantsResponse = await axios.post(
-        `http://localhost:10406/products/${productResponse.data.productId}/variants`,
+        `https://newcrafts.onrender.com/products/${productResponse.data.productId}/variants`,
         {
           variants: formattedVariants,
           imageIds: productResponse.data.imageIds,

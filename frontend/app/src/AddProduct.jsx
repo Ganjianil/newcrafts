@@ -25,7 +25,7 @@ const AddProduct = () => {
     try {
       setCategoriesLoading(true);
       const response = await axios.get(
-        "http://localhost:10406/categories/active"
+        "https://newcrafts.onrender.com/categories/active"
       );
       setCategories(response.data);
     } catch (error) {
@@ -108,7 +108,7 @@ const AddProduct = () => {
       });
 
       const response = await axios.post(
-        "http://localhost:10406/products",
+        "https://newcrafts.onrender.com/products",
         formData,
         {
           headers: {

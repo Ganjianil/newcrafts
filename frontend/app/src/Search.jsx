@@ -34,7 +34,9 @@ const Search = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:10406/viewproducts");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewproducts"
+      );
       setAllProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);

@@ -58,7 +58,7 @@ const PreOrderModal = ({ orderData, onClose, onSuccess }) => {
       };
 
       const response = await axios.post(
-        "http://localhost:10406/preorder",
+        "https://newcrafts.onrender.com/preorder",
         preorderData
       );
 

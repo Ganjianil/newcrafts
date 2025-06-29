@@ -16,7 +16,7 @@ setError('');
 setMessage('');
 
 try {
-await axios.post('http://localhost:10406/forgot-password', { email });
+await axios.post("https://newcrafts.onrender.com/forgot-password", { email });
 setMessage('Password reset email sent! Please check your inbox.');
 } catch (error) {
 console.error('Forgot password error:', error);

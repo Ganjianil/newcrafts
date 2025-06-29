@@ -17,7 +17,7 @@ const ManagePreOrders = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:5000/api/admin/preorders",
+        "https://newcrafts.onrender.com/api/admin/preorders",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
@@ -36,7 +36,7 @@ const ManagePreOrders = () => {
   const updatePreOrderStatus = async (preOrderId, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/preorders/${preOrderId}/status`,
+        `https://newcrafts.onrender.com/api/admin/preorders/${preOrderId}/status`,
         { status: newStatus },
         {
           headers: {
@@ -68,7 +68,7 @@ const ManagePreOrders = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/admin/preorders/${preOrderId}`,
+        `https://newcrafts.onrender.com/api/admin/preorders/${preOrderId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
@@ -94,11 +94,14 @@ const ManagePreOrders = () => {
     }
 
     try {
-      await axios.delete("http://localhost:5000/api/admin/preorders/all", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
-        },
-      });
+      await axios.delete(
+        "https://newcrafts.onrender.com/api/admin/preorders/all",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("adminToken")}`,
+          },
+        }
+      );
 
       setPreOrders([]);
       alert("All pre-orders deleted successfully");

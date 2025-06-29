@@ -16,7 +16,9 @@ const ItemCatalog = () => {
   const fetchItems = async () => {
     try {
       // Use your existing backend endpoint
-      const response = await axios.get("http://localhost:10406/viewproducts");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewproducts"
+      );
 
       // Transform the data to work with the catalog format
       const transformedItems = response.data.map((product) => ({
@@ -44,7 +46,7 @@ const ItemCatalog = () => {
       try {
         // Fetch variants for this product
         const response = await axios.get(
-          `http://localhost:10406/products/${item.id}/variants-with-images`
+          `https://newcrafts.onrender.com/products/${item.id}/variants-with-images`
         );
 
         // Transform variants to match expected format
@@ -112,7 +114,7 @@ const ItemCatalog = () => {
             <div className="item-image">
               {item.main_image ? (
                 <img
-                  src={`http://localhost:10406/${item.main_image}`}
+                  src={`https://newcrafts.onrender.com/${item.main_image}`}
                   alt={item.title}
                 />
               ) : (

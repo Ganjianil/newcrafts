@@ -18,7 +18,7 @@ const Photos = () => {
 
   const fetchPhotos = async () => {
     try {
-      const response = await axios.get('http://localhost:10406/photos');
+      const response = await axios.get("https://newcrafts.onrender.com/photos");
       setPhotos(response.data);
       setLoading(false);
     } catch (error) {
@@ -50,9 +50,9 @@ const Photos = () => {
     });
 
     try {
-      await axios.post('http://localhost:10406/photos', formData, {
+      await axios.post("https://newcrafts.onrender.com/photos", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -81,7 +81,7 @@ const Photos = () => {
     setDeletingPhotos(prev => new Set(prev).add(photoId));
     
     try {
-      await axios.delete(`http://localhost:10406/photos/${photoId}`);
+      await axios.delete(`https://newcrafts.onrender.com/photos/${photoId}`);
       setPhotos(prevPhotos => prevPhotos.filter(photo => photo.id !== photoId));
       alert('Photo deleted successfully!');
     } catch (error) {
@@ -104,7 +104,7 @@ const Photos = () => {
     setClearingAll(true);
     
     try {
-      await axios.delete('http://localhost:10406/photos');
+      await axios.delete("https://newcrafts.onrender.com/photos");
       setPhotos([]);
       alert('All photos deleted successfully!');
     } catch (error) {
@@ -164,7 +164,7 @@ const Photos = () => {
             <span className="upload-icon">📷</span>
             <span>Choose Photos</span>
           </label>
-          
+
           {selectedFiles.length > 0 && (
             <div className="selected-files-info">
               <p>{selectedFiles.length} photo(s) selected</p>
@@ -182,18 +182,20 @@ const Photos = () => {
                   <img src={url} alt={`Preview ${index + 1}`} />
                   <div className="preview-info">
                     <span>{selectedFiles[index].name}</span>
-                    <span>{(selectedFiles[index].size / 1024 / 1024).toFixed(2)} MB</span>
+                    <span>
+                      {(selectedFiles[index].size / 1024 / 1024).toFixed(2)} MB
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
-            
+
             <div className="preview-actions">
               <button onClick={clearPreviews} className="clear-btn">
                 Clear Selection
               </button>
-              <button 
-                onClick={handleUpload} 
+              <button
+                onClick={handleUpload}
                 disabled={uploading}
                 className="upload-btn"
               >
@@ -203,7 +205,7 @@ const Photos = () => {
                     Uploading...
                   </>
                 ) : (
-                  'Upload Photos'
+                  "Upload Photos"
                 )}
               </button>
             </div>
@@ -221,7 +223,7 @@ const Photos = () => {
               disabled={clearingAll}
               className="delete-all-btn"
             >
-              {clearingAll ? 'Deleting...' : 'Delete All Photos'}
+              {clearingAll ? "Deleting..." : "Delete All Photos"}
             </button>
           )}
         </div>
@@ -236,31 +238,34 @@ const Photos = () => {
           <div className="photos-grid">
             {photos.map((photo) => (
               <div key={photo.id} className="photo-card">
-                <div className="photo-image" onClick={() => openPhotoModal(photo)}>
+                <div
+                  className="photo-image"
+                  onClick={() => openPhotoModal(photo)}
+                >
                   <img
-                    src={`http://localhost:10406/${photo.image_path}`}
-                    alt={photo.original_name || 'Photo'}
+                    src={`https://newcrafts.onrender.com/${photo.image_path}`}
+                    alt={photo.original_name || "Photo"}
                     loading="lazy"
                   />
                   <div className="photo-overlay">
                     <span className="view-icon">👁️</span>
                   </div>
                 </div>
-                
+
                 <div className="photo-info">
                   <div className="photo-details">
-                    <h4>{photo.original_name || 'Untitled'}</h4>
+                    <h4>{photo.original_name || "Untitled"}</h4>
                     <p className="upload-date">
                       {new Date(photo.upload_date).toLocaleDateString()}
                     </p>
                   </div>
-                  
+
                   <button
                     onClick={() => handleDeletePhoto(photo.id)}
                     disabled={deletingPhotos.has(photo.id)}
                     className="delete-photo-btn"
                   >
-                    {deletingPhotos.has(photo.id) ? '⏳' : '🗑️'}
+                    {deletingPhotos.has(photo.id) ? "⏳" : "🗑️"}
                   </button>
                 </div>
               </div>
@@ -277,12 +282,14 @@ const Photos = () => {
               ✕
             </button>
             <img
-              src={`http://localhost:10406/${selectedPhoto.image_path}`}
-              alt={selectedPhoto.original_name || 'Photo'}
+              src={`https://newcrafts.onrender.com/${selectedPhoto.image_path}`}
+              alt={selectedPhoto.original_name || "Photo"}
             />
             <div className="modal-info">
-              <h3>{selectedPhoto.original_name || 'Untitled'}</h3>
-              <p>Uploaded: {new Date(selectedPhoto.upload_date).toLocaleString()}</p>
+              <h3>{selectedPhoto.original_name || "Untitled"}</h3>
+              <p>
+                Uploaded: {new Date(selectedPhoto.upload_date).toLocaleString()}
+              </p>
             </div>
           </div>
         </div>

@@ -46,10 +46,13 @@ const Login = ({ onLogin }) => {
     try {
       console.log("Attempting login with:", { username: formData.username });
 
-      const response = await axios.post("http://localhost:10406/login", {
-        username: formData.username,
-        password: formData.password,
-      });
+      const response = await axios.post(
+        "https://newcrafts.onrender.com/login",
+        {
+          username: formData.username,
+          password: formData.password,
+        }
+      );
 
       console.log("Login response:", response.data);
 

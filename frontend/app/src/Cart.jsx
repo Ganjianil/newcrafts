@@ -35,11 +35,14 @@ const Cart = ({ isAuthenticated, cartItems, setCartItems }) => {
   const fetchCartItems = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:10406/viewcart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewcart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setCartItems(response.data);
       setLoading(false);
     } catch (error) {
@@ -53,7 +56,7 @@ const Cart = ({ isAuthenticated, cartItems, setCartItems }) => {
     setRemovingItems((prev) => new Set(prev).add(itemId));
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:10406/cart/item/${itemId}`, {
+      await axios.delete(`https://newcrafts.onrender.com/cart/item/${itemId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -87,7 +90,7 @@ const Cart = ({ isAuthenticated, cartItems, setCartItems }) => {
       setClearingCart(true);
       try {
         const token = localStorage.getItem("token");
-        await axios.delete("http://localhost:10406/cart/clear", {
+        await axios.delete("https://newcrafts.onrender.com/cart/clear", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -117,7 +120,7 @@ const Cart = ({ isAuthenticated, cartItems, setCartItems }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:10406/apply-coupon",
+        "https://newcrafts.onrender.com/apply-coupon",
         { coupon_code: couponCode },
         {
           headers: {
@@ -251,7 +254,7 @@ const Cart = ({ isAuthenticated, cartItems, setCartItems }) => {
       }
 
       const response = await axios.post(
-        "http://localhost:10406/checkout",
+        "https://newcrafts.onrender.com/checkout",
         checkoutData,
         {
           headers: {

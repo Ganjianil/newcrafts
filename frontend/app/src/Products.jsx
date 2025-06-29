@@ -13,7 +13,9 @@ const Products = ({ isAuthenticated, setCartItems }) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:10406/viewproducts");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewproducts"
+      );
       // Show only first 10 products on homepage
       setProducts(response.data.slice(0, 10));
       setLoading(false);
@@ -32,7 +34,7 @@ const Products = ({ isAuthenticated, setCartItems }) => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:10406/cart",
+        "https://newcrafts.onrender.com/cart",
         { product_id: [productId] },
         {
           headers: {
@@ -51,11 +53,14 @@ const Products = ({ isAuthenticated, setCartItems }) => {
   const fetchCartItems = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:10406/viewcart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewcart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       setCartItems(response.data);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -76,7 +81,7 @@ const Products = ({ isAuthenticated, setCartItems }) => {
               <div className="product-image">
                 {product.image_path ? (
                   <img
-                    src={`http://localhost:10406/${product.image_path}`}
+                    src={`https://newcrafts.onrender.com/${product.image_path}`}
                     alt={product.product_name}
                   />
                 ) : (

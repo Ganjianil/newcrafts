@@ -86,7 +86,7 @@ const ItemVariantSelector = ({ item, onClose }) => {
               {selectedOption && selectedOption.images.length > 0 ? (
                 <>
                   <img
-                    src={`http://localhost:10406/${selectedOption.images[currentImageIndex]}`}
+                    src={`https://newcrafts.onrender.com/${selectedOption.images[currentImageIndex]}`}
                     alt={`${item.title} - ${selectedOption.option_name}`}
                     className="main-image"
                   />
@@ -103,7 +103,7 @@ const ItemVariantSelector = ({ item, onClose }) => {
                 </>
               ) : item.main_image ? (
                 <img
-                  src={`http://localhost:10406/${item.main_image}`}
+                  src={`https://newcrafts.onrender.com/${item.main_image}`}
                   alt={item.title}
                   className="main-image"
                 />

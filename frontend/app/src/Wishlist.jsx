@@ -31,11 +31,14 @@ const Wishlist = ({ isAuthenticated, setCartItems }) => {
       }
 
       console.log("Fetching wishlist items...");
-      const response = await axios.get("http://localhost:10406/wishlist", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com//wishlist",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log("Wishlist response:", response.data);
 

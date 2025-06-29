@@ -24,7 +24,9 @@ const ManageCategories = () => {
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:10406/categories");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/categories"
+      );
       setCategories(response.data);
     } catch (error) {
       console.error("Error fetching categories:", error);
@@ -92,7 +94,7 @@ const ManageCategories = () => {
 
       if (editingCategory) {
         await axios.put(
-          `http://localhost:10406/admin/categories/${editingCategory.id}`,
+          `https://newcrafts.onrender.com/admin/categories/${editingCategory.id}`,
           formDataToSend,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -101,7 +103,7 @@ const ManageCategories = () => {
         setMessage("Category updated successfully!");
       } else {
         await axios.post(
-          "http://localhost:10406/admin/categories",
+          "https://newcrafts.onrender.com/admin/categories",
           formDataToSend,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -142,7 +144,7 @@ const ManageCategories = () => {
 
     try {
       await axios.delete(
-        `http://localhost:10406/admin/categories/${categoryId}`
+        `https://newcrafts.onrender.com/admin/categories/${categoryId}`
       );
       setMessage("Category deleted successfully!");
       await fetchCategories();
@@ -161,7 +163,7 @@ const ManageCategories = () => {
       formData.append("is_active", !currentStatus);
 
       await axios.put(
-        `http://localhost:10406/admin/categories/${categoryId}`,
+        `https://newcrafts.onrender.com/admin/categories/${categoryId}`,
         formData
       );
 
@@ -314,7 +316,7 @@ const ManageCategories = () => {
               <div className="category-image">
                 {category.image_path ? (
                   <img
-                    src={`http://localhost:10406/${category.image_path}`}
+                    src={`https://newcrafts.onrender.com/${category.image_path}`}
                     alt={category.name}
                   />
                 ) : (

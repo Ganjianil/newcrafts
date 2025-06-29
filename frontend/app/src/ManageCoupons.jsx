@@ -29,7 +29,9 @@ const ManageCoupons = () => {
   const fetchCoupons = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:10406/admin/coupons");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/admin/coupons"
+      );
       setCoupons(response.data);
     } catch (error) {
       console.error("Error fetching coupons:", error);
@@ -119,12 +121,15 @@ const ManageCoupons = () => {
 
       if (editingCoupon) {
         await axios.put(
-          `http://localhost:10406/admin/coupons/${editingCoupon.id}`,
+          `https://newcrafts.onrender.com/admin/coupons/${editingCoupon.id}`,
           dataToSend
         );
         setMessage("Coupon updated successfully!");
       } else {
-        await axios.post("http://localhost:10406/admin/coupons", dataToSend);
+        await axios.post(
+          "https://newcrafts.onrender.com/admin/coupons",
+          dataToSend
+        );
         setMessage("Coupon created successfully!");
       }
 
@@ -165,7 +170,9 @@ const ManageCoupons = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:10406/admin/coupons/${couponId}`);
+      await axios.delete(
+        `https://newcrafts.onrender.com/admin/coupons/${couponId}`
+      );
       setMessage("Coupon deleted successfully!");
       await fetchCoupons();
     } catch (error) {
@@ -186,7 +193,7 @@ const ManageCoupons = () => {
       };
 
       await axios.put(
-        `http://localhost:10406/admin/coupons/${couponId}`,
+        `https://newcrafts.onrender.com/admin/coupons/${couponId}`,
         updatedData
       );
       setMessage(

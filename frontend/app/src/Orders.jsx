@@ -17,10 +17,10 @@ fetchOrders();
 const fetchOrders = async () => {
 try {
 const token = localStorage.getItem("token");
-const response = await axios.get("http://localhost:10406/myorders", {
-headers: {
-Authorization: `Bearer ${token}`,
-},
+const response = await axios.get("https://newcrafts.onrender.com/myorders", {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
 });
 // Group orders by order_id
 const groupedOrders = response.data.reduce((acc, order) => {
@@ -60,11 +60,15 @@ const cancelOrder = async (orderId) => {
 try {
 setCancellingOrder(orderId);
 const token = localStorage.getItem("token");
-await axios.put(`http://localhost:10406/order/${orderId}/cancel`, {}, {
-headers: {
-Authorization: `Bearer ${token}`,
-},
-});
+await axios.put(
+  `https://newcrafts.onrender.com/order/${orderId}/cancel`,
+  {},
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 alert("Order cancelled successfully");
 fetchOrders(); // Refresh orders
 } catch (error) {
@@ -78,12 +82,15 @@ setCancellingOrder(null);
 const downloadInvoice = async (orderId) => {
 try {
 const token = localStorage.getItem("token");
-const response = await axios.get(`http://localhost:10406/order/${orderId}/invoice`, {
-headers: {
-Authorization: `Bearer ${token}`,
-},
-responseType: 'blob',
-});
+const response = await axios.get(
+  `https://newcrafts.onrender.com/order/${orderId}/invoice`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    responseType: "blob",
+  }
+);
 
 const url = window.URL.createObjectURL(new Blob([response.data]));
 const link = document.createElement('a');

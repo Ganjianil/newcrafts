@@ -65,7 +65,9 @@ const Header = ({
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:10406/viewproducts");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewproducts"
+      );
       setAllProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -202,7 +204,7 @@ const Header = ({
                           <div className="suggestion-image">
                             {product.image_path ? (
                               <img
-                                src={`http://localhost:10406/${product.image_path}`}
+                                src={`https://newcrafts.onrender.com/${product.image_path}`}
                                 alt={product.product_name}
                               />
                             ) : (
@@ -351,7 +353,7 @@ const Header = ({
                         <div className="suggestion-image">
                           {product.image_path ? (
                             <img
-                              src={`http://localhost:10406/${product.image_path}`}
+                              src={`https://newcrafts.onrender.com/${product.image_path}`}
                               alt={product.product_name}
                             />
                           ) : (

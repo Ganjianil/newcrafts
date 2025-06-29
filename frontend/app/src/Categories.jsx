@@ -43,7 +43,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
     try {
       setCategoriesLoading(true);
       const response = await axios.get(
-        "http://localhost:10406/categories/active"
+        "https://newcrafts.onrender.com/categories/active"
       );
       safeLog("Categories fetched:", response.data);
 
@@ -64,7 +64,9 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
 
   const fetchActiveCoupons = async () => {
     try {
-      const response = await axios.get("http://localhost:10406/coupons/active");
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/coupons/active"
+      );
       safeLog("Active coupons fetched:", response.data);
 
       // Ensure response.data is an array
@@ -85,7 +87,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
     try {
       safeLog("Fetching products for category ID:", categoryId);
       const response = await axios.get(
-        `http://localhost:10406/products/category/${categoryId}`
+        `https://newcrafts.onrender.com/products/category/${categoryId}`
       );
       safeLog("Products response:", response.data);
 
@@ -160,7 +162,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:10406/cart",
+        "https://newcrafts.onrender.com/cart",
         { product_id: [productId] },
         {
           headers: {
@@ -195,7 +197,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:10406/wishlist",
+        "https://newcrafts.onrender.com/wishlist",
         { product_id: productId, variant_id: variantId },
         {
           headers: {
@@ -241,11 +243,14 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
         console.log("No token available for fetching cart items");
         return;
       }
-      const response = await axios.get("http://localhost:10406/viewcart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://newcrafts.onrender.com/viewcart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       safeLog("Cart items fetched:", response.data);
       if (Array.isArray(response.data)) {
         setCartItems(response.data);
@@ -395,7 +400,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
                   <div className="category-image">
                     {category.image_path ? (
                       <img
-                        src={`http://localhost:10406/${category.image_path}`}
+                        src={`https://newcrafts.onrender.com/${category.image_path}`}
                         alt={safeRender(category.name, "Category")}
                       />
                     ) : (
@@ -474,7 +479,7 @@ const Categories = ({ isAuthenticated, setCartItems }) => {
                       <div className="product-image-wide">
                         {product.image_path ? (
                           <img
-                            src={`http://localhost:10406/${product.image_path}`}
+                            src={`https://newcrafts.onrender.com/${product.image_path}`}
                             alt={safeRender(product.product_name, "Product")}
                           />
                         ) : (
